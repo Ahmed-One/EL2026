@@ -1,8 +1,9 @@
 """Sum 1 … n — Compute and display the running total."""
 
 
-def compute(number):
-    """write your soulution Here Sum 1 … n — Compute and display the running total."""
+def compute(number: int):
+    """Function to return the Fibonacci sum of given number"""
+    return sum(list(range(number + 1)))
 
 
 if __name__ == "__main__":

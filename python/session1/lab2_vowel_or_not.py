@@ -2,7 +2,8 @@
 
 
 def vowel(letter):
-    """Write your solution here. Don't forget to return the result at the end."""
+    """Function to check whether a letter is a vowel"""
+    return letter in ['a', 'A', 'e', 'E', 'i', 'I', 'o', 'O', 'u', 'U']
 
 
 if __name__ == "__main__":

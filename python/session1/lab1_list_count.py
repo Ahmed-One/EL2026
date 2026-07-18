@@ -1,8 +1,10 @@
 """Write a Python program to count the number 4 in a given list."""
 
 
-def count(lst):
-    """Write your solution here. Don't forget to return the result at the end...."""
+def count(lst: list):
+    """Count the number of instance s of the number 4 in input argument list"""
+    # return sum(1 for i in lst if i == 4)
+    return lst.count(4)
 
 
 if __name__ == "__main__":
