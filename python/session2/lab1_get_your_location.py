@@ -4,7 +4,10 @@ import requests
 
 
 def get_info_location():
-    """Write your solution here. Don't forget to return the result at the end."""
+    """ Get location data using requests library from external URL"""
+    req = requests.get("https://ipinfo.io/json", timeout=10)
+    req.raise_for_status()
+    return req.json()
 
 
 if __name__ == "__main__":
