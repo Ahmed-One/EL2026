@@ -3,7 +3,7 @@
 import os
 
 
-def parse_config_file(file_path):
+def parse_config_file(file_path: str):
     r"""
     parse template data from a file. and return a dictionary with the data.
     Example :
@@ -17,6 +17,14 @@ def parse_config_file(file_path):
     pattern = r'^([A-Z_][A-Z0-9_:${}]*)\s*=\s*"([^"]*(?:\\[\s\S]*?)*)"'
 
     """
+    with open(file_path, mode = 'r', encoding = 'utf-8-sig') as f:
+        lines = f.readlines()
+    parsed_dict = {}
+    for line in lines:
+        if line.count('='):
+            text = line.strip().replace(' = ', '=').replace('"', '').split('=')
+            parsed_dict[text[0]] = text[1]
+    return parsed_dict
 
 
 if __name__ == "__main__":
