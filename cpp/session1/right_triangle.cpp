@@ -5,7 +5,10 @@
 bool isRightTriangle(int a, int b, int c) {
   // write your solution here...
   // Hint: Use Pythagorean theorem: a² + b² = c² (where c is the largest side)
-  return 0;
+  int sides[] = {a*a, b*b, c*c};
+  std::sort(sides, sides+3);
+  std::cout<< "a^2: "<< (a*a) << " b^2: " << (b*b) << " c^2: " << (c*c) << std::endl; 
+  return (sides[0] + sides[1] == sides[2])? true : false;
 }
 
 int main() {

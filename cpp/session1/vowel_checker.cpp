@@ -5,7 +5,16 @@ bool isVowel(char letter) {
   // write your solution here...
   // Hint: Check if the letter is 'a', 'e', 'i', 'o', 'u' (both uppercase and
   // lowercase)
-  return false;
+  char vowels[] = {'a', 'e', 'i', 'o', 'u',
+                   'A', 'E', 'I', 'O', 'U'};
+  bool found = false;
+  for (int i = 0; i < std::size(vowels); ++i){
+      if(letter == vowels[i]){
+        found = true;
+        break;
+      } 
+  }
+  return found;
 }
 
 int main() {

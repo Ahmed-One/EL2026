@@ -5,7 +5,18 @@ int sumDigits(int number) {
   // write your solution here...
   // Hint: Use modulo (%) to get last digit and division (/) to remove last
   // digit Hint: Handle negative numbers appropriately
-  return 0;
+  std::cout<< "function: sumDigits" << std::endl;
+  std::cout<< "number: " << number << std::endl;  
+  int sum = 0;
+  int remainder = 0;
+  for (int i = 10; abs(number) > 0;){
+      remainder = abs(number) % i;
+      sum = sum + remainder;
+      number = static_cast<int>(abs(number) / i);
+      std::cout<< "i: " << i << " num: " << number << " rem:" << remainder << std::endl; 
+  }
+  std::cout<< "sum: " << sum << std::endl;
+  return sum;
 }
 
 int main() {
