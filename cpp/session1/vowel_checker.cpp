@@ -1,4 +1,5 @@
 #include <cassert>
+#include <cstddef>
 #include <iostream>
 
 bool isVowel(char letter) {
@@ -8,7 +9,7 @@ bool isVowel(char letter) {
   char vowels[] = {'a', 'e', 'i', 'o', 'u',
                    'A', 'E', 'I', 'O', 'U'};
   bool found = false;
-  for (int i = 0; i < std::size(vowels); ++i){
+  for (int i = 0; static_cast<std::size_t>(i) < std::size(vowels); ++i){
       if(letter == vowels[i]){
         found = true;
         break;
