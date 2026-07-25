@@ -3,6 +3,7 @@
 #include <cstring>
 #include <iostream>
 #include <memory>
+#include <string>
 
 class MyString {
 private:
@@ -12,30 +13,40 @@ private:
 public:
   // Default constructor
   // write your solution here...
-  MyString() {}
+  MyString() : string_data(new char[1]), length(0) {}
 
-  MyString(const char *str) {}
+  MyString(const char *str) : string_data(new char[str? std::strlen(str) : 0]), 
+                              length(str? std::strlen(str) : 0)
+  {
+    if (str != nullptr){
+      std::strcpy(string_data, str);
+    }
+  }
 
   // Destructor
   ~MyString() = default;
 
   // Getters
-  size_t getLength() const { return 0; }
-  const char *getString() const { return ""; }
+  size_t getLength() const { return length; }
+  const char *getString() const { return string_data; }
 
   // Indexing operator (const version)
   // uncomment and write your solution
-  //   const char &operator[](size_t index) const { }
+  const char &operator[](size_t index) const { return string_data[index]; }
 
   // Indexing operator (non-const version)
   // uncomment and write your solution
-  //   char &operator[](size_t index) {  }
+  char &operator[](size_t index) { return string_data[index]; }
 
   // Equality operator
-  bool operator==(const MyString &other) const { return false; }
+  bool operator==(const MyString &other) const {
+    return std::strcmp(string_data, other.getString()) == 0;
+  }
 
   // Inequality operator
-  bool operator!=(const MyString &other) const { return false; }
+  bool operator!=(const MyString &other) const {
+    return std::strcmp(string_data, other.getString()) != 0;
+  }
 };
 
 int main() {
