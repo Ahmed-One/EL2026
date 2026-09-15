@@ -12,12 +12,13 @@ private:
 public:
   // Constructor - automatically enters function
   FunctionBacktrace(const std::string &funcName) : functionName(funcName) {
-    // write your solution here
+    callStack.push(funcName);
   }
 
   // Destructor - automatically exits function
   ~FunctionBacktrace() {
-    // write your solution here
+    callStack.pop();
+
   }
 
   // dont modify this function
@@ -49,7 +50,14 @@ public:
 
   // Check if function is in stack
   static bool isFunctionInStack(const std::string &funcName) {
-    // write your solution here
+    std::stack<std::string> tempStack = callStack;
+
+    while(!tempStack.empty()){
+      if(tempStack.top() == funcName){
+        return true;
+      }
+      tempStack.pop();
+    }
     return false;
   }
 };
@@ -58,6 +66,7 @@ public:
 std::stack<std::string> FunctionBacktrace::callStack;
 
 #define EnterFn FunctionBacktrace bt(__FUNCTION__)
+// #define ExitFn FunctionBacktrace bte(__FUNCTION__)
 #define PRINT_BT FunctionBacktrace::printBacktrace()
 
 // dont modify these functions
@@ -80,7 +89,7 @@ void testBasicFunctionality() {
   assert(FunctionBacktrace::isFunctionInStack("testBasicFunctionality") ==
          true);
   assert(FunctionBacktrace::getStackDepth() >= 1);
-  ExitFn;
+  // ExitFn;
 }
 
 int main() {
